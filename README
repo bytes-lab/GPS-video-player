@@ -1,0 +1,21 @@
+It plays video according to the gps position and priority
+It uses selenium to launch full screen video player.
+
+Requirements
+- Install selenium
+- Python2.7 (as of now, I will change it to python3)
+
+How to run:
+- python gps_video.py
+
+Files:
+	rpi_video.py:
+		main script
+	video: 
+		pseudo json file 
+	video_auto.html:
+		It is called from python script.
+	
+	
+You have to configure the python file and html file to your real paths.
+You have to have default.mp4 file in advance.		

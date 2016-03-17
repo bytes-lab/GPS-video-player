@@ -1,0 +1,8 @@
+{
+ "videos": [
+  {"url": "http://localhost/video_list/car.mp4", "priority": 3,"center": "12.9283483,79.8887319","radius": 300},
+  {"url": "http://localhost/video_list/bus.mp4", "priority": 3},
+  {"url": "http://localhost/video_list/computer.mp4", "priority": 2},
+  {"url": "http://localhost/video_list/tramcar.mp4", "priority": 1,"center": "6.928318,79.8881237","radius": 300}
+ ]
+}

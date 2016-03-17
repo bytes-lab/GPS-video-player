@@ -1,0 +1,58 @@
+<html>
+<head>
+	<style>
+		video#myVideo {  
+			position: fixed; 
+			right: 0; 
+			bottom: 0; 
+			min-width: 100%; 
+			min-height: 100%; 
+			width: auto; 
+			height: auto; 
+			z-index: -100; 
+			background: url(polina.jpg) no-repeat; 
+			background-size: cover;  
+		}
+	</style>
+</head>
+<body>
+<video autoplay controls id="myVideo" style="visibility:hidden;" onplay="var s=this;setTimeout(function(){s.style.visibility='visible';},100);">
+</video>
+</body>
+<script>
+	// configure local video path
+	var video_path = 'file:///root/work/raspberry%20pi/videos/';
+	
+	var videoSource = [{'file': 'default.mp4', 'priority': 5}];
+ 	document.getElementById("myVideo").setAttribute("src",video_path+videoSource[0].file);
+	
+	function videoPlay(filename)
+	{
+		document.getElementById("myVideo").setAttribute("src", video_path+filename);
+		document.getElementById("myVideo").load();
+		document.getElementById("myVideo").play();
+	}
+	
+	document.getElementById('myVideo').addEventListener('ended',myHandler,false);
+	
+	function myHandler() 
+	{
+		videoSource[0].priority = getMinPriority() + 1;
+		
+		videoSource.sort(function(a, b){
+			return a.priority - b.priority;
+		});
+
+		videoPlay(videoSource[0].file);	
+	}
+	
+	function getMinPriority()
+	{
+		var lowPriority = 1;
+		for(i=0; i<videoSource.length; i++)
+			if (lowPriority < videoSource[i].priority)
+				lowPriority = videoSource[i].priority;
+		return lowPriority;
+	}
+</script>
+</head>
